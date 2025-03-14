@@ -27,6 +27,7 @@ module virtualMachine 'br/public:avm/res/compute/virtual-machine:0.12.2' = {
         nicSuffix: '-nic-01'
       }
     ]
+    encryptionAtHost: false
     osDisk: {
       caching: 'ReadWrite'
       diskSizeGB: 128
