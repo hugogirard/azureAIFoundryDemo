@@ -39,3 +39,4 @@ module search 'br/public:avm/res/search/search-service:0.7.2' = {
 output searchResourceName string = search.outputs.name
 output searchResourceId string = search.outputs.resourceId
 output searchApiEndpoint string = 'https://${search.outputs.name}/search.windows.net'
+output systemAssignedMIPrincipalId string = search.outputs.systemAssignedMIPrincipalId

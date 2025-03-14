@@ -79,3 +79,5 @@ module hub 'br/public:avm/res/machine-learning-services/workspace:0.11.0' = {
     }
   }
 }
+
+output storageResourceId string = dependencies.outputs.storageResourceId

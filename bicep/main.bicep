@@ -93,3 +93,15 @@ module aifoundry 'modules/foundry/aifoundry.bicep' = {
 }
 
 /* RBAC Foundry */
+
+module rbacFoundry 'modules/rbac/foundry.bicep' = {
+  scope: rg
+  name: 'rbacfoundry'
+  params: {
+    aiSearchResourceId: search.outputs.searchResourceId
+    searchAiSystemAssignedMIPrincipalId: search.outputs.systemAssignedMIPrincipalId
+    openAiSystemAssignedMIPrincipalId: openai.outputs.cognitiveResourceId
+    openaiResourceId: openai.outputs.cognitiveResourceId
+    storageResourceId: aifoundry.outputs.storageResourceId
+  }
+}
