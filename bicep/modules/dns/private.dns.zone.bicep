@@ -24,5 +24,7 @@ module privateDnsFile 'br/public:avm/res/network/private-dns-zone:0.7.0' = {
   }
 }
 
-output privateDnsBlobResourceId string = privateDnsBlob.outputs.resourceId
-output privateDnsFileResourceId string = privateDnsFile.outputs.resourceId
+output privateDnsZoneResourceId array = [
+  privateDnsBlob.outputs.resourceId
+  privateDnsFile.outputs.resourceId
+]

@@ -19,7 +19,7 @@ param subnetPeAddressPrefix string
 param subnetJumpboxAddressPrefix string
 
 /*  Variables */
-//var suffix = uniqueString(resourceGroup().id)
+var suffix = uniqueString(rg.id)
 
 /*  Create resource group */
 resource rg 'Microsoft.Resources/resourceGroups@2024-11-01' = {
@@ -51,3 +51,14 @@ module privateDnsZones 'modules/dns/private.dns.zone.bicep' = {
 }
 
 /* AI Foundry */
+
+module aifoundry 'modules/foundry/aifoundry.bicep' = {
+  scope: rg
+  name: 'aifoundry'
+  params: {
+    location: location
+    subnetResourceId: vnet.outputs.subnetResourceIds[0]
+    suffix: suffix
+    privateDnsZoneGroupIds: privateDnsZones.outputs.privateDnsZoneResourceId
+  }
+}
