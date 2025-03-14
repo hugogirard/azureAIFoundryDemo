@@ -18,10 +18,8 @@ module search 'br/public:avm/res/search/search-service:0.7.2' = {
     replicaCount: 1
     sku: 'standard'
     networkRuleSet: {
-      networkAcls: {
-        bypass: 'AzureServices'
-        defaultAction: 'Allow'
-      }
+      ipRules: []
+      bypass: 'AzureServices'
     }
     privateEndpoints: [
       {

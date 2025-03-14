@@ -15,6 +15,7 @@ module cognitive 'br/public:avm/res/cognitive-services/account:0.10.1' = {
     kind: kind
     location: location
     publicNetworkAccess: 'Disabled'
+    customSubDomainName: resourceName
     managedIdentities: {
       systemAssigned: true
     }
