@@ -100,7 +100,7 @@ module rbacFoundry 'modules/rbac/foundry.bicep' = {
   params: {
     aiSearchResourceId: search.outputs.searchResourceId
     searchAiSystemAssignedMIPrincipalId: search.outputs.systemAssignedMIPrincipalId
-    openAiSystemAssignedMIPrincipalId: openai.outputs.cognitiveResourceId
+    openAiSystemAssignedMIPrincipalId: openai.outputs.systemAssignedMIPrincipalId
     openaiResourceId: openai.outputs.cognitiveResourceId
     storageResourceId: aifoundry.outputs.storageResourceId
   }
