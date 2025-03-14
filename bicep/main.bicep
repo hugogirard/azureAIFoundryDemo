@@ -58,6 +58,17 @@ module bastion 'modules/network/bastion.bicep' = {
   }
 }
 
+module jumpbox 'modules/compute/jumpbox.bicep' = {
+  scope: rg
+  name: 'jumpbox'
+  params: {
+    location: location
+    adminPassword: adminUserName
+    adminUserName: adminPassword
+    subnetResourceId: vnet.outputs.subnetResourceIds[1]
+  }
+}
+
 /* Private DNS Zones */
 
 module privateDnsZones 'modules/dns/private.dns.zone.bicep' = {
