@@ -87,7 +87,6 @@ module containerRegistry 'br/public:avm/res/container-registry/registry:0.9.1' =
     zoneRedundancy: 'Disabled'
     privateEndpoints: [
       {
-        service: 'vault'
         subnetResourceId: subnetId
         privateDnsZoneGroup: {
           privateDnsZoneGroupConfigs: [
