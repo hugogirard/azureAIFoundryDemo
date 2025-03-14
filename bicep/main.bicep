@@ -88,7 +88,7 @@ module aifoundry 'modules/foundry/aifoundry.bicep' = {
     aiSearchEndpoint: search.outputs.searchResourceId
     aiSearchResourceId: search.outputs.searchApiEndpoint
     openaiEndpoint: openai.outputs.cognitiveEndpoint
-    openAiResourceId: openai.outputs.cognitiveEndpoint
+    openAiResourceId: openai.outputs.cognitiveResourceId
   }
 }
 
