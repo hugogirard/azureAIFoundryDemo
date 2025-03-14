@@ -10,8 +10,8 @@ param vnetAddressPrefix = '12.0.0.0/16'
 
 param resourceGroupName = 'rg-ai-foundry-demo'
 
-// param adminPassword = ''
+param adminPassword = ''
 
-// param adminUserName = ''
+param adminUserName = ''
 
 param userObjectId = ''

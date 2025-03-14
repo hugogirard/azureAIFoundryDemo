@@ -18,13 +18,13 @@ param subnetPeAddressPrefix string
 @description('The address prefix subnet for the jumpbox')
 param subnetJumpboxAddressPrefix string
 
-// @secure()
-// @description('The jumpbox admin username')
-// param adminUserName string
+@secure()
+@description('The jumpbox admin username')
+param adminUserName string
 
-// @secure()
-// @description('The jumpbox admin password')
-// param adminPassword string
+@secure()
+@description('The jumpbox admin password')
+param adminPassword string
 
 @description('The object ID of the user lead associated to the project, needed to add RBAC to the resource')
 param userObjectId string
@@ -61,16 +61,16 @@ module vnet 'modules/network/vnet.bicep' = {
 //   }
 // }
 
-// module jumpbox 'modules/compute/jumpbox.bicep' = {
-//   scope: rg
-//   name: 'jumpbox'
-//   params: {
-//     location: location
-//     adminPassword: adminUserName
-//     adminUserName: adminPassword
-//     subnetResourceId: vnet.outputs.subnetResourceIds[1]
-//   }
-// }
+module jumpbox 'modules/compute/jumpbox.bicep' = {
+  scope: rg
+  name: 'jumpbox'
+  params: {
+    location: location
+    adminPassword: adminPassword
+    adminUserName: adminUserName
+    subnetResourceId: vnet.outputs.subnetResourceIds[1]
+  }
+}
 
 /* Private DNS Zones */
 
