@@ -84,6 +84,7 @@ module containerRegistry 'br/public:avm/res/container-registry/registry:0.9.1' =
     publicNetworkAccess: 'Disabled'
     acrAdminUserEnabled: false
     networkRuleBypassOptions: 'AzureServices'
+    zoneRedundancy: 'Disabled'
     privateEndpoints: [
       {
         service: 'vault'
