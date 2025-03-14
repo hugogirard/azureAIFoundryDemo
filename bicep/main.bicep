@@ -59,6 +59,6 @@ module aifoundry 'modules/foundry/aifoundry.bicep' = {
     location: location
     subnetResourceId: vnet.outputs.subnetResourceIds[0]
     suffix: suffix
-    privateDnsZoneGroupIds: privateDnsZones.outputs.privateDnsZoneResourceId
+    privateDnsZoneGroupIds: privateDnsZones.outputs.privateDnsZoneResourceIds
   }
 }

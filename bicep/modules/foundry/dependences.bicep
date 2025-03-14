@@ -9,6 +9,10 @@ module storage 'br/public:avm/res/storage/storage-account:0.18.2' = {
     name: 'strf${suffix}'
     location: location
     publicNetworkAccess: 'Disabled'
+    networkAcls: {
+      bypass: 'AzureServices'
+      defaultAction: 'Allow'
+    }
     privateEndpoints: [
       {
         service: 'blob'
@@ -28,6 +32,34 @@ module storage 'br/public:avm/res/storage/storage-account:0.18.2' = {
           privateDnsZoneGroupConfigs: [
             {
               privateDnsZoneResourceId: privateDnsZoneGroupIds[1]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+
+module keyvault 'br/public:avm/res/key-vault/vault:0.12.1' = {
+  name: 'keyvault'
+  params: {
+    name: 'vault-ai-${suffix}'
+    publicNetworkAccess: 'Disabled'
+    enableRbacAuthorization: true
+    enablePurgeProtection: false
+    enableSoftDelete: false
+    networkAcls: {
+      bypass: 'AzureServices'
+      defaultAction: 'Allow'
+    }
+    privateEndpoints: [
+      {
+        service: 'vault'
+        subnetResourceId: subnetId
+        privateDnsZoneGroup: {
+          privateDnsZoneGroupConfigs: [
+            {
+              privateDnsZoneResourceId: privateDnsZoneGroupIds[2]
             }
           ]
         }
