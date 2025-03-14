@@ -18,15 +18,14 @@ param subnetPeAddressPrefix string
 @description('The address prefix subnet for the jumpbox')
 param subnetJumpboxAddressPrefix string
 
-@secure()
-@description('The jumpbox admin username')
-param adminUserName string
+// @secure()
+// @description('The jumpbox admin username')
+// param adminUserName string
 
-@secure()
-@description('The jumpbox admin password')
-param adminPassword string
+// @secure()
+// @description('The jumpbox admin password')
+// param adminPassword string
 
-@secure()
 @description('The object ID of the user lead associated to the project, needed to add RBAC to the resource')
 param userObjectId string
 
@@ -147,5 +146,16 @@ module project 'modules/foundry/project.bicep' = {
     location: location
     hubResourceId: aifoundry.outputs.hubResourceId
     projectName: 'contoso'
+  }
+}
+
+module rbacproject 'modules/rbac/user.project.bicep' = {
+  scope: rg
+  name: 'rbaccontosoproject'
+  params: {
+    aiSearchResourceId: search.outputs.searchResourceId
+    openaiResourceId: openai.outputs.cognitiveResourceId
+    storageResourceId: aifoundry.outputs.storageResourceId
+    userObjectId: userObjectId
   }
 }
