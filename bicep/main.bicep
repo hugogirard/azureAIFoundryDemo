@@ -146,6 +146,6 @@ module project 'modules/foundry/project.bicep' = {
   params: {
     location: location
     hubResourceId: aifoundry.outputs.hubResourceId
-    projectName: 'Contoso Project'
+    projectName: 'contoso'
   }
 }
