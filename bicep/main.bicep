@@ -62,16 +62,16 @@ module vnet 'modules/network/vnet.bicep' = {
 //   }
 // }
 
-module jumpbox 'modules/compute/jumpbox.bicep' = {
-  scope: rg
-  name: 'jumpbox'
-  params: {
-    location: location
-    adminPassword: adminUserName
-    adminUserName: adminPassword
-    subnetResourceId: vnet.outputs.subnetResourceIds[1]
-  }
-}
+// module jumpbox 'modules/compute/jumpbox.bicep' = {
+//   scope: rg
+//   name: 'jumpbox'
+//   params: {
+//     location: location
+//     adminPassword: adminUserName
+//     adminUserName: adminPassword
+//     subnetResourceId: vnet.outputs.subnetResourceIds[1]
+//   }
+// }
 
 /* Private DNS Zones */
 
@@ -136,5 +136,16 @@ module rbacFoundry 'modules/rbac/foundry.bicep' = {
     openAiSystemAssignedMIPrincipalId: openai.outputs.systemAssignedMIPrincipalId
     openaiResourceId: openai.outputs.cognitiveResourceId
     storageResourceId: aifoundry.outputs.storageResourceId
+  }
+}
+
+/* Project */
+module project 'modules/foundry/project.bicep' = {
+  scope: rg
+  name: 'projectcontoso'
+  params: {
+    location: location
+    hubResourceId: aifoundry.outputs.hubResourceId
+    projectName: 'Contoso Project'
   }
 }
