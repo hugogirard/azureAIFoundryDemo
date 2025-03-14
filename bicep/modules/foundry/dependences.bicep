@@ -78,7 +78,7 @@ module keyvault 'br/public:avm/res/key-vault/vault:0.12.1' = {
 module containerRegistry 'br/public:avm/res/container-registry/registry:0.9.1' = {
   name: 'foundryregistry'
   params: {
-    name: 'acrai${subnetId}'
+    name: 'acrai${suffix}'
     location: location
     tags: tag
     publicNetworkAccess: 'Disabled'
