@@ -40,3 +40,4 @@ module cognitive 'br/public:avm/res/cognitive-services/account:0.10.1' = {
 
 output cognitiveResourceName string = cognitive.outputs.name
 output cognitiveResourceId string = cognitive.outputs.resourceId
+output cognitiveEndpoint string = cognitive.outputs.endpoint

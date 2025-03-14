@@ -2,6 +2,10 @@ param location string
 param suffix string
 param subnetResourceId string
 param privateDnsZoneGroupIds array
+param openAiResourceId string
+param openaiEndpoint string
+param aiSearchResourceId string
+param aiSearchEndpoint string
 
 module dependencies 'dependences.bicep' = {
   name: 'aifoundrydependencies'
@@ -28,6 +32,34 @@ module hub 'br/public:avm/res/machine-learning-services/workspace:0.11.0' = {
     associatedApplicationInsightsResourceId: dependencies.outputs.appInsightResourceId
     associatedContainerRegistryResourceId: dependencies.outputs.containerRegistryResourceId
     publicNetworkAccess: 'Disabled'
+    connections: [
+      {
+        name: 'openai'
+        target: openaiEndpoint
+        category: 'AzureOpenAI'
+        connectionProperties: {
+          authType: 'AAD'
+        }
+        isSharedToAll: true
+        metadata: {
+          ApiType: 'Azure'
+          ResourceId: openAiResourceId
+        }
+      }
+      {
+        name: 'aisearch'
+        target: aiSearchEndpoint
+        category: 'CognitiveSearch'
+        connectionProperties: {
+          authType: 'AAD'
+        }
+        isSharedToAll: true
+        metadata: {
+          ApiType: 'Azure'
+          ResourceId: aiSearchResourceId
+        }
+      }
+    ]
     privateEndpoints: [
       {
         subnetResourceId: subnetResourceId

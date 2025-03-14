@@ -85,8 +85,11 @@ module aifoundry 'modules/foundry/aifoundry.bicep' = {
     subnetResourceId: vnet.outputs.subnetResourceIds[0]
     suffix: suffix
     privateDnsZoneGroupIds: privateDnsZones.outputs.privateDnsZoneResourceIds
+    aiSearchEndpoint: search.outputs.searchResourceId
+    aiSearchResourceId: search.outputs.searchApiEndpoint
+    openaiEndpoint: openai.outputs.cognitiveEndpoint
+    openAiResourceId: openai.outputs.cognitiveEndpoint
   }
 }
 
-@description('The name of the search resource')
-output searchResourceName string = search.outputs.searchResourceName
+/* RBAC Foundry */
