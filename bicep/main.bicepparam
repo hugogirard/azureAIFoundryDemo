@@ -13,3 +13,5 @@ param resourceGroupName = 'rg-ai-foundry-demo'
 param adminPassword = ''
 
 param adminUserName = ''
+
+param userObjectId = ''

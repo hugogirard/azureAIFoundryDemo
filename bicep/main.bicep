@@ -26,6 +26,10 @@ param adminUserName string
 @description('The jumpbox admin password')
 param adminPassword string
 
+@secure()
+@description('The object ID of the user lead associated to the project, needed to add RBAC to the resource')
+param userObjectId string
+
 /*  Variables */
 var suffix = uniqueString(rg.id)
 
