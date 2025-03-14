@@ -35,6 +35,6 @@ jobs:
           region: ${{ env.REGION }}
           deploymentName:  ${{ github.run_id }}
           template: ./bicep/main.bicep
-          parameters: ./bicep/main.bicepparam                                   
+          parameters: ./bicep/main.bicepparam adminUserName=${{ secrets.ADMIN_USER_NAME }} adminPassword=${{ secrets.ADMIN_PASSWORD }}
 
     

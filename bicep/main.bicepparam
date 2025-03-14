@@ -9,3 +9,7 @@ param subnetPeAddressPrefix = '12.0.1.0/24'
 param vnetAddressPrefix = '12.0.0.0/16'
 
 param resourceGroupName = 'rg-ai-foundry-demo'
+
+param adminPassword = ''
+
+param adminUserName = ''
