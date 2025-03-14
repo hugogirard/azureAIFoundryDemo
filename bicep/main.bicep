@@ -18,6 +18,14 @@ param subnetPeAddressPrefix string
 @description('The address prefix subnet for the jumpbox')
 param subnetJumpboxAddressPrefix string
 
+@secure()
+@description('The jumpbox admin username')
+param adminUserName string
+
+@secure()
+@description('The jumpbox admin password')
+param adminPassword string
+
 /*  Variables */
 var suffix = uniqueString(rg.id)
 
@@ -37,6 +45,16 @@ module vnet 'modules/network/vnet.bicep' = {
     subnetJumpboxAddressPrefix: subnetJumpboxAddressPrefix
     subnetPeAddressPrefix: subnetPeAddressPrefix
     vnetAddressPrefix: vnetAddressPrefix
+  }
+}
+
+module bastion 'modules/network/bastion.bicep' = {
+  scope: rg
+  name: 'bastion'
+  params: {
+    location: location
+    suffix: suffix
+    virtualNetworkResourceId: vnet.outputs.resourceId
   }
 }
 
