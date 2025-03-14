@@ -54,7 +54,6 @@ module keyvault 'br/public:avm/res/key-vault/vault:0.12.1' = {
     publicNetworkAccess: 'Disabled'
     enableRbacAuthorization: true
     enablePurgeProtection: false
-    enableSoftDelete: false
     networkAcls: {
       bypass: 'AzureServices'
       defaultAction: 'Allow'
