@@ -50,6 +50,31 @@ module privateDnsZones 'modules/dns/private.dns.zone.bicep' = {
   }
 }
 
+/* AI Services */
+
+module openai 'modules/ai/cognitive.bicep' = {
+  scope: rg
+  name: 'openai'
+  params: {
+    location: location
+    kind: 'OpenAI'
+    privateDnsZoneResourceId: privateDnsZones.outputs.privateDnsZoneResourceIds[6]
+    resourceName: 'openai-${suffix}'
+    subnetResourceId: vnet.outputs.subnetResourceIds[0]
+  }
+}
+
+module search 'modules/ai/search.bicep' = {
+  scope: rg
+  name: 'search'
+  params: {
+    location: location
+    privateDnsZoneResourceId: privateDnsZones.outputs.privateDnsZoneResourceIds[7]
+    subnetResourceId: vnet.outputs.subnetResourceIds[0]
+    suffix: suffix
+  }
+}
+
 /* AI Foundry */
 
 module aifoundry 'modules/foundry/aifoundry.bicep' = {
@@ -62,3 +87,6 @@ module aifoundry 'modules/foundry/aifoundry.bicep' = {
     privateDnsZoneGroupIds: privateDnsZones.outputs.privateDnsZoneResourceIds
   }
 }
+
+@description('The name of the search resource')
+output searchResourceName string = search.outputs.searchResourceName
