@@ -51,15 +51,15 @@ module vnet 'modules/network/vnet.bicep' = {
   }
 }
 
-// module bastion 'modules/network/bastion.bicep' = {
-//   scope: rg
-//   name: 'bastion'
-//   params: {
-//     location: location
-//     suffix: suffix
-//     virtualNetworkResourceId: vnet.outputs.resourceId
-//   }
-// }
+module bastion 'modules/network/bastion.bicep' = {
+  scope: rg
+  name: 'bastion'
+  params: {
+    location: location
+    suffix: suffix
+    virtualNetworkResourceId: vnet.outputs.resourceId
+  }
+}
 
 module jumpbox 'modules/compute/jumpbox.bicep' = {
   scope: rg
