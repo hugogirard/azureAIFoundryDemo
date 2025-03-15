@@ -1,4 +1,6 @@
 param vnetResourceId string
+param virtualMachineResourceName string
+param virtualMachineNicResourceName string
 
 var privateDNSZones = [
   'privatelink.file.${environment().suffixes.storage}'
@@ -11,6 +13,12 @@ var privateDNSZones = [
   'privatelink.search.windows.net'
 ]
 
+resource networkInterface 'Microsoft.Network/networkInterfaces@2021-02-01' existing = {
+  name: virtualMachineNicResourceName
+}
+
+var privateIPJumpbox = networkInterface.properties.ipConfigurations[0].properties.privateIPAddress
+
 module privateDnsZones 'br/public:avm/res/network/private-dns-zone:0.7.0' = [
   for dnsZone in privateDNSZones: {
     name: dnsZone
@@ -21,33 +29,19 @@ module privateDnsZones 'br/public:avm/res/network/private-dns-zone:0.7.0' = [
           virtualNetworkResourceId: vnetResourceId
         }
       ]
+      a: [
+        {
+          name: virtualMachineResourceName
+          aRecords: [
+            {
+              ipv4Address: privateIPJumpbox
+            }
+          ]
+        }
+      ]
     }
   }
 ]
-
-// module privateDnsBlob 'br/public:avm/res/network/private-dns-zone:0.7.0' = {
-//   name: 'privateDnsBlob'
-//   params: {
-//     name: 'privatelink.blob.${environment().suffixes.storage}'
-//     virtualNetworkLinks: [
-//       {
-//         virtualNetworkResourceId: vnetResourceId
-//       }
-//     ]
-//   }
-// }
-
-// module privateDnsFile 'br/public:avm/res/network/private-dns-zone:0.7.0' = {
-//   name: 'privateDnsFile'
-//   params: {
-//     name: 'privatelink.file.${environment().suffixes.storage}'
-//     virtualNetworkLinks: [
-//       {
-//         virtualNetworkResourceId: vnetResourceId
-//       }
-//     ]
-//   }
-// }
 
 output privateDnsZoneResourceIds array = [
   for i in range(0, length(privateDNSZones)): privateDnsZones[i].outputs.resourceId

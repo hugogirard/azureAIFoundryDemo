@@ -48,3 +48,6 @@ module virtualMachine 'br/public:avm/res/compute/virtual-machine:0.12.2' = {
     }
   }
 }
+
+output resourceName string = virtualMachine.outputs.name
+output nicConfigurationName string = '${virtualMachine.outputs.name}-nic-01'

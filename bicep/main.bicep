@@ -79,6 +79,8 @@ module privateDnsZones 'modules/dns/private.dns.zone.bicep' = {
   scope: rg
   params: {
     vnetResourceId: vnet.outputs.resourceId
+    virtualMachineNicResourceName: jumpbox.outputs.nicConfigurationName
+    virtualMachineResourceName: jumpbox.outputs.resourceName
   }
 }
 
