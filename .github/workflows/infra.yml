@@ -37,4 +37,21 @@ jobs:
           template: ./bicep/main.bicep
           parameters: ./bicep/main.bicepparam adminUserName=${{ secrets.ADMIN_USER_NAME }} adminPassword=${{ secrets.ADMIN_PASSWORD }} userObjectId=${{ secrets.USER_OBJECT_ID}}
 
+
+      - uses: gliech/create-github-secret-action@v1
+        with:
+          name: STORATE_RESOURCE_NAME
+          value: ${{ steps.createResources.outputs.storageResourceName }}
+          pa_token: ${{ secrets.PA_TOKEN }}          
     
+      - uses: gliech/create-github-secret-action@v1
+        with:
+          name: OPENAI_RESOURCE_NAME
+          value: ${{ steps.createResources.outputs.openAiResourceName }}
+          pa_token: ${{ secrets.PA_TOKEN }}                   
+
+      - uses: gliech/create-github-secret-action@v1
+        with:
+          name: SEARCHAI_RESOURCE_NAME
+          value: ${{ steps.createResources.outputs.searchAiResourceName }}
+          pa_token: ${{ secrets.PA_TOKEN }}          

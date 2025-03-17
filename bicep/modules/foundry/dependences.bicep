@@ -119,6 +119,7 @@ module appinsights 'br/public:avm/res/insights/component:0.6.0' = {
 }
 
 output storageResourceId string = storage.outputs.resourceId
+output storageResourceName string = storage.outputs.name
 output keyvaultResourceId string = keyvault.outputs.resourceId
 output containerRegistryResourceId string = containerRegistry.outputs.resourceId
 output appInsightResourceId string = appinsights.outputs.resourceId

@@ -51,15 +51,15 @@ module vnet 'modules/network/vnet.bicep' = {
   }
 }
 
-module bastion 'modules/network/bastion.bicep' = {
-  scope: rg
-  name: 'bastion'
-  params: {
-    location: location
-    suffix: suffix
-    virtualNetworkResourceId: vnet.outputs.resourceId
-  }
-}
+// module bastion 'modules/network/bastion.bicep' = {
+//   scope: rg
+//   name: 'bastion'
+//   params: {
+//     location: location
+//     suffix: suffix
+//     virtualNetworkResourceId: vnet.outputs.resourceId
+//   }
+// }
 
 module jumpbox 'modules/compute/jumpbox.bicep' = {
   scope: rg
@@ -161,3 +161,7 @@ module rbacproject 'modules/rbac/user.project.bicep' = {
     userObjectId: userObjectId
   }
 }
+
+output storageResourceName string = aifoundry.outputs.storageResourceName
+output openAiResourceName string = openai.outputs.cognitiveResourceName
+output searchAiResourceName string = search.outputs.searchResourceName
