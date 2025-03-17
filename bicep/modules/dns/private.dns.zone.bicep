@@ -37,6 +37,7 @@ module privateDnsZones 'br/public:avm/res/network/private-dns-zone:0.7.0' = [
               ipv4Address: privateIPJumpbox
             }
           ]
+          ttl: 10
         }
       ]
     }

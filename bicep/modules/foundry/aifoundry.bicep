@@ -68,7 +68,7 @@ module hub 'br/public:avm/res/machine-learning-services/workspace:0.11.0' = {
         privateDnsZoneGroup: {
           privateDnsZoneGroupConfigs: [
             {
-              privateDnsZoneResourceId: privateDnsZoneGroupIds[3]
+              privateDnsZoneResourceId: privateDnsZoneGroupIds[4]
             }
           ]
         }
