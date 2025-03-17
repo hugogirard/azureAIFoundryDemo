@@ -14,6 +14,8 @@ module dependencies 'dependences.bicep' = {
     subnetId: subnetResourceId
     suffix: suffix
     privateDnsZoneGroupIds: privateDnsZoneGroupIds
+    searchResourceId: aiSearchResourceId
+    openaiResourceId: openAiResourceId
   }
 }
 
@@ -86,15 +88,15 @@ module hub 'br/public:avm/res/machine-learning-services/workspace:0.11.0' = {
           }
           type: 'PrivateEndpoint'
         }
-        // searchservice: {
-        //   category: 'UserDefined'
-        //   destination: {
-        //     serviceResourceId: aiSearchResourceId
-        //     subresourceTarget: 'searchService'
-        //     sparkEnabled: false
-        //   }
-        //   type: 'PrivateEndpoint'
-        // }
+        searchservice: {
+          category: 'UserDefined'
+          destination: {
+            serviceResourceId: aiSearchResourceId
+            subresourceTarget: 'searchService'
+            sparkEnabled: false
+          }
+          type: 'PrivateEndpoint'
+        }
       }
     }
   }

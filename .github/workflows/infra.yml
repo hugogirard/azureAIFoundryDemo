@@ -37,6 +37,9 @@ jobs:
           template: ./bicep/main.bicep
           parameters: ./bicep/main.bicepparam adminUserName=${{ secrets.ADMIN_USER_NAME }} adminPassword=${{ secrets.ADMIN_PASSWORD }} userObjectId=${{ secrets.USER_OBJECT_ID}}
 
+      - name: Add rule storage Workspace
+        run: |
+          az storage account network-rule add -g ${{ steps.createResources.outputs.resourceGroupName }} --account-name ${{ steps.createResources.outputs.storageResourceName }} --resource-id ${{ steps.createResources.outputs.storageResourceId }} --tenant-id ${{ secrets.TENANT_ID}}
 
       - uses: gliech/create-github-secret-action@v1
         with:
@@ -55,3 +58,9 @@ jobs:
           name: SEARCHAI_RESOURCE_NAME
           value: ${{ steps.createResources.outputs.searchAiResourceName }}
           pa_token: ${{ secrets.PA_TOKEN }}          
+
+      - uses: gliech/create-github-secret-action@v1
+        with:
+          name: RESOURCE_GROUP_NAME
+          value: ${{ steps.createResources.outputs.resourceGroupName }}
+          pa_token: ${{ secrets.PA_TOKEN }}            

@@ -2,6 +2,8 @@ param location string
 param subnetId string
 param suffix string
 param privateDnsZoneGroupIds array
+param searchResourceId string
+param openaiResourceId string
 
 var tag = {
   description: 'AI Foundry'
@@ -17,6 +19,16 @@ module storage 'br/public:avm/res/storage/storage-account:0.18.2' = {
     networkAcls: {
       bypass: 'AzureServices'
       defaultAction: 'Allow'
+      resourceAccessRules: [
+        {
+          resourceId: openaiResourceId
+          tenantId: subscription().tenantId
+        }
+        {
+          resourceId: searchResourceId
+          tenantId: subscription().tenantId
+        }
+      ]
     }
     privateEndpoints: [
       {

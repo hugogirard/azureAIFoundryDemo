@@ -119,8 +119,8 @@ module aifoundry 'modules/foundry/aifoundry.bicep' = {
     subnetResourceId: vnet.outputs.subnetResourceIds[0]
     suffix: suffix
     privateDnsZoneGroupIds: privateDnsZones.outputs.privateDnsZoneResourceIds
-    aiSearchEndpoint: search.outputs.searchResourceId
-    aiSearchResourceId: search.outputs.searchApiEndpoint
+    aiSearchEndpoint: search.outputs.searchApiEndpoint
+    aiSearchResourceId: search.outputs.searchResourceId
     openaiEndpoint: openai.outputs.cognitiveEndpoint
     openAiResourceId: openai.outputs.cognitiveResourceId
   }
@@ -163,5 +163,8 @@ module rbacproject 'modules/rbac/user.project.bicep' = {
 }
 
 output storageResourceName string = aifoundry.outputs.storageResourceName
+output storageResourceId string = aifoundry.outputs.storageResourceId
 output openAiResourceName string = openai.outputs.cognitiveResourceName
 output searchAiResourceName string = search.outputs.searchResourceName
+output hubResourceId string = aifoundry.outputs.hubResourceId
+output resourceGroupName string = rg.name
