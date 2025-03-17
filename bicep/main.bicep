@@ -163,14 +163,14 @@ module rbacproject 'modules/rbac/user.project.bicep' = {
   }
 }
 
-module rbac_private_endpoint_project 'modules/rbac/private.endpoint.bicep' = {
-  scope: rg
-  name: 'rbacprivateendpoint'
-  params: {
-    projectSystemAssignedMIPrincipalId: project.outputs.systemAssignedMIPrincipalId
-    storagePrivateEndpoints: aifoundry.outputs.storagePrivateEndpoints
-  }
-}
+// module rbac_private_endpoint_project 'modules/rbac/private.endpoint.bicep' = {
+//   scope: rg
+//   name: 'rbacprivateendpoint'
+//   params: {
+//     projectSystemAssignedMIPrincipalId: project.outputs.systemAssignedMIPrincipalId
+//     storagePrivateEndpoints: aifoundry.outputs.storagePrivateEndpoints
+//   }
+// }
 
 output storageResourceName string = aifoundry.outputs.storageResourceName
 output storageResourceId string = aifoundry.outputs.storageResourceId
