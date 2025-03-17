@@ -76,6 +76,26 @@ module hub 'br/public:avm/res/machine-learning-services/workspace:0.11.0' = {
     systemDatastoresAuthMode: 'Identity'
     managedNetworkSettings: {
       isolationMode: 'AllowOnlyApprovedOutbound'
+      outboundRules: {
+        openai: {
+          category: 'UserDefined'
+          destination: {
+            serviceResourceId: openAiResourceId
+            subresourceTarget: 'account'
+            sparkEnabled: false
+          }
+          type: 'PrivateEndpoint'
+        }
+        searchservice: {
+          category: 'UserDefined'
+          destination: {
+            serviceResourceId: aiSearchResourceId
+            subresourceTarget: 'searchService'
+            sparkEnabled: false
+          }
+          type: 'PrivateEndpoint'
+        }
+      }
     }
   }
 }
