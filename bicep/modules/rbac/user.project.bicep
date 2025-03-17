@@ -52,14 +52,14 @@ resource ai_developer 'Microsoft.Authorization/roleDefinitions@2022-04-01' exist
   scope: subscription()
 }
 
-module ai_developer_project 'br/public:avm/ptn/authorization/resource-role-assignment:0.1.2' = if (!empty(userObjectId)) {
-  name: 'ai_developer_project'
-  params: {
-    principalId: userObjectId
-    resourceId: projectResourceId
-    roleDefinitionId: ai_developer.id
-  }
-}
+// module ai_developer_project 'br/public:avm/ptn/authorization/resource-role-assignment:0.1.2' = if (!empty(userObjectId)) {
+//   name: 'ai_developer_project'
+//   params: {
+//     principalId: userObjectId
+//     resourceId: projectResourceId
+//     roleDefinitionId: ai_developer.id
+//   }
+// }
 
 module search_index_data_contributor_user 'br/public:avm/ptn/authorization/resource-role-assignment:0.1.2' = if (!empty(userObjectId)) {
   name: 'search_index_data_contributor_user'
