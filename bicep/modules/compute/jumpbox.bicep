@@ -21,7 +21,10 @@ module virtualMachine 'br/public:avm/res/compute/virtual-machine:0.12.2' = {
         ipConfigurations: [
           {
             name: 'ipconfig01'
-            subnetResourceId: subnetResourceId
+            pipConfiguration: {
+              publicIpNameSuffix: '-pip-01'
+            }            
+            subnetResourceId: subnetResourceId            
           }
         ]
         nicSuffix: '-nic-01'
