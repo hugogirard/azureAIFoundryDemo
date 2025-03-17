@@ -34,4 +34,4 @@ jobs:
           region: ${{ env.REGION }}
           deploymentName:  ${{ github.run_id }}
           template: ./bicep/assign.project.roles.bicep
-          parameters: resourceGroupName=rg-ai-foundry-demo openAiResourceName=${{ secrets.OPENAI_RESOURCE_NAME }} storageName=${{ secrets.STORATE_RESOURCE_NAME }} aiSearchName=${{ secrets.SEARCHAI_RESOURCE_NAME }}
+          parameters: userObjectID=${{ inputs.user_object_id }}  resourceGroupName=rg-ai-foundry-demo openAiResourceName=${{ secrets.OPENAI_RESOURCE_NAME }} storageName=${{ secrets.STORATE_RESOURCE_NAME }} aiSearchName=${{ secrets.SEARCHAI_RESOURCE_NAME }}
