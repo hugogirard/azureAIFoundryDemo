@@ -14,7 +14,7 @@ module storage 'br/public:avm/res/storage/storage-account:0.18.2' = {
   params: {
     name: 'strf${suffix}'
     location: location
-    publicNetworkAccess: 'Disabled'
+    publicNetworkAccess: ''
     tags: tag
     networkAcls: {
       bypass: 'AzureServices'

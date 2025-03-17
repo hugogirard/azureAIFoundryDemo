@@ -39,7 +39,7 @@ jobs:
 
       - name: Add rule storage Workspace
         run: |
-          az storage account network-rule add -g ${{ steps.createResources.outputs.resourceGroupName }} --account-name ${{ steps.createResources.outputs.storageResourceName }} --resource-id ${{ steps.createResources.outputs.storageResourceId }} --tenant-id ${{ secrets.TENANT_ID}}
+          az storage account network-rule add -g ${{ steps.createResources.outputs.resourceGroupName }} --account-name ${{ steps.createResources.outputs.storageResourceName }} --resource-id ${{ steps.createResources.outputs.hubResourceId }} --tenant-id ${{ secrets.TENANT_ID}}
 
       - uses: gliech/create-github-secret-action@v1
         with:
