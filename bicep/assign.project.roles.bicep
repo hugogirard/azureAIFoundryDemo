@@ -15,6 +15,9 @@ param storageName string
 @description('The AI Search Resource Name')
 param aiSearchName string
 
+@description('Project resource Id')
+param projectResourceId string
+
 resource rg 'Microsoft.Resources/resourceGroups@2024-11-01' existing = {
   name: resourceGroupName
 }
@@ -42,5 +45,6 @@ module rbac 'modules/rbac/user.project.bicep' = {
     openaiResourceId: openai.id
     storageResourceId: storage.id
     userObjectId: userObjectID
+    projectResourceId: projectResourceId
   }
 }

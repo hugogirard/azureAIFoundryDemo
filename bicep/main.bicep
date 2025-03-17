@@ -159,6 +159,16 @@ module rbacproject 'modules/rbac/user.project.bicep' = {
     openaiResourceId: openai.outputs.cognitiveResourceId
     storageResourceId: aifoundry.outputs.storageResourceId
     userObjectId: userObjectId
+    projectResourceId: project.outputs.systemAssignedMIPrincipalId
+  }
+}
+
+module rbac_private_endpoint_project 'modules/rbac/private.endpoint.bicep' = {
+  scope: rg
+  name: 'rbacprivateendpoint'
+  params: {
+    projectSystemAssignedMIPrincipalId: project.outputs.systemAssignedMIPrincipalId
+    storagePrivateEndpoints: aifoundry.outputs.storagePrivateEndpoints
   }
 }
 
@@ -168,3 +178,4 @@ output openAiResourceName string = openai.outputs.cognitiveResourceName
 output searchAiResourceName string = search.outputs.searchResourceName
 output hubResourceId string = aifoundry.outputs.hubResourceId
 output resourceGroupName string = rg.name
+output projectResourceId string = project.outputs.resourceId

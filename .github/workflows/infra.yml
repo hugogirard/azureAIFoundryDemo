@@ -63,4 +63,10 @@ jobs:
         with:
           name: RESOURCE_GROUP_NAME
           value: ${{ steps.createResources.outputs.resourceGroupName }}
-          pa_token: ${{ secrets.PA_TOKEN }}            
+          pa_token: ${{ secrets.PA_TOKEN }}          
+
+      - uses: gliech/create-github-secret-action@v1
+        with:
+          name: PROJECT_RESOURCEID
+          value: ${{ steps.createResources.outputs.projectResourceId }}
+          pa_token: ${{ secrets.PA_TOKEN }}      

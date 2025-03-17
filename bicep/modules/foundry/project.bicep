@@ -16,3 +16,6 @@ module project 'br/public:avm/res/machine-learning-services/workspace:0.11.0' = 
     }
   }
 }
+
+output systemAssignedMIPrincipalId string = project.outputs.systemAssignedMIPrincipalId
+output resourceId string = project.outputs.resourceId

@@ -14,7 +14,7 @@ module storage 'br/public:avm/res/storage/storage-account:0.18.2' = {
   params: {
     name: 'strf${suffix}'
     location: location
-    publicNetworkAccess: ''
+    publicNetworkAccess: 'Disabled'
     tags: tag
     networkAcls: {
       bypass: 'AzureServices'
@@ -135,3 +135,4 @@ output storageResourceName string = storage.outputs.name
 output keyvaultResourceId string = keyvault.outputs.resourceId
 output containerRegistryResourceId string = containerRegistry.outputs.resourceId
 output appInsightResourceId string = appinsights.outputs.resourceId
+output storagePrivateEndpoints array = storage.outputs.privateEndpoints
