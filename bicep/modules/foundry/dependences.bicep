@@ -19,16 +19,16 @@ module storage 'br/public:avm/res/storage/storage-account:0.18.2' = {
     networkAcls: {
       bypass: 'AzureServices'
       defaultAction: 'Allow'
-      resourceAccessRules: [
-        {
-          resourceId: openaiResourceId
-          tenantId: subscription().tenantId
-        }
-        {
-          resourceId: searchResourceId
-          tenantId: subscription().tenantId
-        }
-      ]
+      // resourceAccessRules: [
+      //   {
+      //     resourceId: openaiResourceId
+      //     tenantId: subscription().tenantId
+      //   }
+      //   {
+      //     resourceId: searchResourceId
+      //     tenantId: subscription().tenantId
+      //   }
+      // ]
     }
     privateEndpoints: [
       {
