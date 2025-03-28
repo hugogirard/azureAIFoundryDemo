@@ -18,7 +18,7 @@ resource search_index_data_contributor 'Microsoft.Authorization/roleDefinitions@
 
 @description('Built-in Role: [Cognitive Services Contributor]')
 resource cognitive_service_contributor 'Microsoft.Authorization/roleDefinitions@2022-04-01' existing = {
-  name: '8ebe5a00-799e-43f5-93ac-243d3dce84a7'
+  name: '25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68'
   scope: subscription()
 }
 
